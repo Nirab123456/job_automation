@@ -22,12 +22,17 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import date
 import math
+import os 
+
+
 
 # ==============================================
 #  FUNCTION
 # ==============================================
 def saveHTMLtoFile(fileName: str, html_content: str) -> None:
     outputFolder: str = "./test/" if Scrappy["debugMode"] else "./unparsedHTML/"
+    os.makedirs(outputFolder, exist_ok=True)
+
     with open(outputFolder + fileName, 'w', encoding='utf-8') as myFile:
         myFile.write(html_content)
     print(f"End of Copying HTML to {outputFolder + fileName}....\n")
